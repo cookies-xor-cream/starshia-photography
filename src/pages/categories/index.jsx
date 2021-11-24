@@ -29,8 +29,6 @@ const Categories = () => {
   const canonicalImageData = queryData.allFile.group
     .map((group) => group.nodes[0])
 
-  console.log(canonicalImageData)
-
   return (
     <Layout>
       <Seo title="Home" />

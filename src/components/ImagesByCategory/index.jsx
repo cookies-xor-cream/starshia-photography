@@ -20,8 +20,6 @@ const ImagesByCategory = ({ imageData }) => {
         imageGrid[imageGrid.length - 1] = [...imageGrid[imageGrid.length - 1], image]
     })
 
-    console.log(imageGrid);
-
     return (
         <div className={styles.imageCategoriesWrapper}>
             {imageGrid.map((row, i) =>

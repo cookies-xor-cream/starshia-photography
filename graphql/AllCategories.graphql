@@ -1,0 +1,7 @@
+query AllCategories {
+  allFile(
+    filter: {extension: {regex: "/(jpg)|(jpeg)|(png)|(webp)/"}, sourceInstanceName: {eq: "photos"}}
+  ) {
+    distinct(field: relativeDirectory)
+  }
+}
