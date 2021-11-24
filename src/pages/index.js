@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import ImagesByCategory from "../components/ImagesByCategory";
+import ExplodeImagesByCategory from "../components/ExplodeImagesByCategory";
 
 import Layout from "../components/layout";
 import Seo from "../components/seo";
@@ -35,7 +35,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Seo title="Home" />
-      <ImagesByCategory imageGroups={imageGroups} />
+      <ExplodeImagesByCategory imageGroups={imageGroups} />
     </Layout>
   );
 }

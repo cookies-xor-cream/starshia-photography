@@ -1,0 +1,20 @@
+.imageCategoriesWrapper {
+    // row
+    > div {
+        display: grid;
+        place-items: center;
+
+        &._0 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    
+        &._1 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+}

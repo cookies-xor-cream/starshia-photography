@@ -3,7 +3,22 @@ import Image from './image';
 
 import * as styles from './index.module.scss';
 
-const ImagesByCategory = ({ images }) => {
+const ImagesByCategory = ({ imageGroups }) => {
+    const groupedImage = imageGroups.map((group, i) =>
+        group.map((imagedata, j) =>
+            <Image
+                className={styles[`_${(i+j)%2}`]}
+                imagedata={imagedata}
+            />
+        )
+    );
+
+    const images = imageGroups.reduce(
+        (arr, group) =>
+            [...arr, ...group],
+        []
+    );
+
     const row1 = 3;
     const row2 = 2;
 
