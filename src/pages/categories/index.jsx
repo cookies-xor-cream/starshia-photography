@@ -13,6 +13,7 @@ const Categories = () => {
     ) {
       group(field: relativeDirectory, limit: 1) {
         nodes {
+          relativeDirectory
           childImageSharp {
             original {
               src
@@ -25,13 +26,15 @@ const Categories = () => {
     }
   }`);
 
-  const cononicalImages = queryData.allFile.group
-    .map((group) => group.nodes[0].childImageSharp.original)
+  const canonicalImageData = queryData.allFile.group
+    .map((group) => group.nodes[0])
+
+  console.log(canonicalImageData)
 
   return (
     <Layout>
       <Seo title="Home" />
-      <ImagesByCategory images={cononicalImages} />
+      <ImagesByCategory imageData={canonicalImageData} />
     </Layout>
   );
 }
