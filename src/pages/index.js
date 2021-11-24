@@ -1,9 +1,10 @@
-import * as React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import * as React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import ImagesByCategory from "../components/ImagesByCategory";
+
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
 const IndexPage = () => {
   const queryData = useStaticQuery(graphql`query AllImagesByCategory {
@@ -32,11 +33,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <Seo title="Home" />
-      {imageGroups.map((group) =>
-        group.map((image) =>
-          <img src={image.src} />
-        )
-      )}
+      <ImagesByCategory imageGroups={imageGroups} />
     </Layout>
   );
 }
