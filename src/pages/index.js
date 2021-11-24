@@ -30,6 +30,8 @@ const IndexPage = () => {
       a.childImageSharp.original
   ));
 
+  console.log(imageGroups);
+
   return (
     <Layout>
       <Seo title="Home" />
