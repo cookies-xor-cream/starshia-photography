@@ -1,0 +1,17 @@
+query AllImagesByCategory {
+  allFile(
+    filter: {extension: {regex: "/(jpg)|(jpeg)|(png)|(webp)/"}, sourceInstanceName: {eq: "photos"}}
+  ) {
+    group(field: relativeDirectory) {
+      nodes {
+        childImageSharp {
+          original {
+            src
+            height
+            width
+          }
+        }
+      }
+    }
+  }
+}
