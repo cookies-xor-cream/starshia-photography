@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '../image';
+import Image from '../Image';
 
 import * as styles from './index.module.scss';
 
