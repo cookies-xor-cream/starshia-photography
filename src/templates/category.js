@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import ImagesByCategory from "../components/ImagesByCategory";
+import ImagesByCategory from "../components/ImageComponents/ImagesByCategory";
 
 export default function BlogPost({ data }) {
   const title = data.allFile.distinct[0];

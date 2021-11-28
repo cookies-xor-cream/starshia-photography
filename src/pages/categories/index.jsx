@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import ImagesByCategory from "../../components/ImagesByCategory";
+import ImagesByCategory from "../../components/ImageComponents/ImagesByCategory";
 
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
