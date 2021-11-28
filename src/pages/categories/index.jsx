@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import ImagesByCategory from "../../components/ImageComponents/ImagesByCategory";
+import ImageGrid from "../../components/ImageComponents/ImageGrid";
 
 import Layout from "../../components/layout";
 import Seo from "../../components/seo";
@@ -33,7 +33,11 @@ const Categories = () => {
   return (
     <Layout>
       <Seo title="Home" />
-      <ImagesByCategory imageData={canonicalImageData} />
+      <ImageGrid
+        includeDirectory
+        categoryLinks
+        imageData={canonicalImageData}
+      />
     </Layout>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import ImagesByCategory from "../components/ImageComponents/ImagesByCategory";
+import ImageGrid from "../components/ImageComponents/ImageGrid";
 
 export default function BlogPost({ data }) {
   const title = data.allFile.distinct[0];
@@ -10,7 +10,7 @@ export default function BlogPost({ data }) {
   return (
     <Layout>
       {title}
-      <ImagesByCategory imageData={imageData} />
+      <ImageGrid imageData={imageData} />
     </Layout>
   )
 }

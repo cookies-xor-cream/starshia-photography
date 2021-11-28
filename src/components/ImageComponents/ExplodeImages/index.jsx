@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from '../image';
 
-import * as styles from '../ImagesByCategory/index.module.scss';
+import * as styles from './index.module.scss';
 
-const ImagesByCategory = ({ imageGroups }) => {
+const ExplodeImages = ({ imageGroups }) => {
     const groupedImage = imageGroups.map((group, i) =>
         group.map((imagedata, j) =>
             <Image
@@ -52,4 +52,4 @@ const ImagesByCategory = ({ imageGroups }) => {
     );
 }
 
-export default ImagesByCategory;
+export default ExplodeImages;
