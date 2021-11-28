@@ -4,10 +4,12 @@ import Layout from "../components/layout"
 import ImagesByCategory from "../components/ImagesByCategory";
 
 export default function BlogPost({ data }) {
-  const imageData = data.allFile.nodes
-  // const post = data.markdownRemark
+  const title = data.allFile.distinct[0];
+  const imageData = data.allFile.nodes;
+
   return (
     <Layout>
+      {title}
       <ImagesByCategory imageData={imageData} />
     </Layout>
   )
@@ -27,5 +29,7 @@ query AllImagesOfCategory($categoryName: String!) {
         }
       }
     }
+
+    distinct(field: relativeDirectory)
   }
 }`

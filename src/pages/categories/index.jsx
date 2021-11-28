@@ -7,7 +7,8 @@ import Layout from "../../components/layout";
 import Seo from "../../components/seo";
 
 const Categories = () => {
-  const queryData = useStaticQuery(graphql`query AllCanonicalImages {
+  const queryData = useStaticQuery(graphql`
+  query AllCanonicalImages {
     allFile(
       filter: {extension: {regex: "/(jpg)|(jpeg)|(png)|(webp)/"}, sourceInstanceName: {eq: "photos"}}
     ) {

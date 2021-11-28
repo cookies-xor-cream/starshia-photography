@@ -29,6 +29,8 @@ const ImagesByCategory = ({ imageData }) => {
                             <a href={`/categories/${imageInfo.relativeDirectory}`}>
                                 <Image imagedata={imageInfo.childImageSharp.original} />
                             </a>
+
+                            {imageInfo.relativeDirectory && imageInfo.relativeDirectory}
                         </div>
                     )}
                 </div>

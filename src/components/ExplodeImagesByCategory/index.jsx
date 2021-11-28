@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from './image';
 
-import * as styles from './index.module.scss';
+import * as styles from '../ImagesByCategory/index.module.scss';
 
 const ImagesByCategory = ({ imageGroups }) => {
     const groupedImage = imageGroups.map((group, i) =>

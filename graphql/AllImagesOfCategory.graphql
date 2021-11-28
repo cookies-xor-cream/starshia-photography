@@ -1,0 +1,18 @@
+query AllImagesOfCategory($categoryName: String!) {
+  allFile(
+    filter: {extension: {regex: "/(jpg)|(jpeg)|(png)|(webp)/"}, sourceInstanceName: {eq: "photos"}, relativeDirectory: {eq: $categoryName}}
+    sort: {fields: relativePath}
+  ) {
+    nodes {
+      childImageSharp {
+        original {
+          height
+          src
+          width
+        }
+      }
+    }
+
+    distinct(field: relativeDirectory)
+  }
+}
