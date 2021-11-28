@@ -7,9 +7,10 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 
 const IndexPage = () => {
-  const queryData = useStaticQuery(graphql`query AllImagesByCategory {
+  const queryData = useStaticQuery(graphql`
+  query AllImagesByCategory {
     allFile(
-        filter: {extension: {regex: "/(jpg)|(jpeg)|(png)|(webp)/"}, sourceInstanceName: {eq: "photos"}}
+      filter: {extension: {regex: "/(jpg)|(jpeg)|(png)|(webp)/"}, sourceInstanceName: {eq: "photos"}}
     ) {
       group(field: relativeDirectory) {
         nodes {
@@ -22,13 +23,15 @@ const IndexPage = () => {
           }
         }
       }
+      distinct(field: relativeDirectory)
     }
   }`);
 
   const imageGroups = queryData.allFile.group
-  .map((group) => group.nodes.map((a) =>
-      a.childImageSharp.original
-  ));
+    .map((group) => group.nodes.map((a) =>
+        a.childImageSharp.original
+    ))
+    .sort((group, i) => queryData.allFile.distinct[i]);
 
   return (
     <Layout>

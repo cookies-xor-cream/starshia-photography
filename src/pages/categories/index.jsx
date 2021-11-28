@@ -11,9 +11,11 @@ const Categories = () => {
   query AllCanonicalImages {
     allFile(
       filter: {extension: {regex: "/(jpg)|(jpeg)|(png)|(webp)/"}, sourceInstanceName: {eq: "photos"}}
+      sort: {fields: base}
     ) {
       group(field: relativeDirectory, limit: 1) {
         nodes {
+          base
           relativeDirectory
           childImageSharp {
             original {
@@ -28,7 +30,7 @@ const Categories = () => {
   }`);
 
   const canonicalImageData = queryData.allFile.group
-    .map((group) => group.nodes[0])
+    .map((group) => group.nodes[0]);
 
   return (
     <Layout>
