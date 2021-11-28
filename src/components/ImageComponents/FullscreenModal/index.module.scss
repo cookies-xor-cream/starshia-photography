@@ -1,0 +1,40 @@
+.imageModal {
+    display: grid;
+    place-items: center;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(black, 0.8);
+    backdrop-filter: blur(4px);
+
+    .imagewrapper {
+        display: grid;
+        place-items: center;
+
+        width: 80%;
+        height: 80%;
+
+        img {
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .close {
+        position: absolute;
+        right: 2em;
+        top: 1em;
+
+        padding: 0;
+        margin: 0;
+    }
+}
