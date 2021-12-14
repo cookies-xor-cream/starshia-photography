@@ -1,3 +1,14 @@
+# Starshia Photography
+## Temporary Instructions (For Building)
+```bash
+git clone git@github.com:cookies-xor-cream/starshia-photography.git
+cd starshia-photography
+yarn
+yarn develop
+```
+
+---
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
