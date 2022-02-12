@@ -46,7 +46,10 @@ const IndexPage = () => {
         className={styles.carousel}
         modules={[EffectFade]} effect="fade"
         loop
-        autoplay={{delay: 1200}}
+        autoplay={{
+          delay: 1200,
+          disableOnInteraction: false,
+        }}
       >
         {images}
       </Swiper>
