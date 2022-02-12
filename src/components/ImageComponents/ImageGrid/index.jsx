@@ -58,14 +58,6 @@ const ImageGrid = ({
 
     const indexMap = (i, j) => Math.floor(i/2) * (row1 + row2) + (i%2) * row1 + j;
 
-    console.log('!!!', (
-        cc({
-            [styles.mobile]: !!mobile,
-            [styles.desktop]: !mobile,
-            [styles.imageCategoriesWrapper]: true
-        })
-    ));
-
     const nextImage = useCallback(() => {
         setModalIndex((modalIndex + 1) % imageData.length);
     }, [modalIndex])
