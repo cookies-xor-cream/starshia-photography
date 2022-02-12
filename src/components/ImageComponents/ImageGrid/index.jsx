@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import cc from 'classcat';
 
 import Image from '../Image';
 import FullscreenModal from '../FullscreenModal';
 
 import * as styles from './index.module.scss';
+
 
 const ImageGrid = ({
     imageData,
@@ -12,8 +14,27 @@ const ImageGrid = ({
 }) => {
     const [modalIndex, setModalIndex] = useState(-1);
 
-    const row1 = 3;
-    const row2 = 2;
+    const mobileWidth = 768;
+	const isMobile = () => window.innerWidth < mobileWidth;
+
+	const [mobile, setMobile] = useState(isMobile());
+
+	const onWindowResize = () => {
+		setMobile(isMobile());
+	}
+
+	useEffect(() => {
+		setMobile(isMobile);
+		window.addEventListener('resize', onWindowResize);
+	});
+
+    const row1 = useMemo(() => {
+        return mobile ? 1 : 3;
+    });
+
+    const row2 = useMemo(() => {
+        return mobile ? 1 : 2;
+    });
 
     let imageGrid = [];
     imageData.forEach((image, i) => {
@@ -37,6 +58,15 @@ const ImageGrid = ({
 
     const indexMap = (i, j) => Math.floor(i/2) * (row1 + row2) + (i%2) * row1 + j;
 
+    console.log('!!!', (
+        cc({
+            [styles.mobile]: !!mobile,
+            [styles.desktop]: !mobile,
+            [styles.imageCategoriesWrapper]: true
+        })
+    ));
+
+
     return (
         <div>
             {modalIndex !== -1 &&
@@ -46,7 +76,11 @@ const ImageGrid = ({
                 />
             }
 
-            <div className={styles.imageCategoriesWrapper}>
+            <div className={cc({
+            [styles.mobile]: !!mobile,
+            [styles.desktop]: !mobile,
+            [styles.imageCategoriesWrapper]: true
+        })}>
                 {imageGrid.map((row, i) =>
                     <div className={styles[`_${i%2}`]}>
                         {row.map((imageInfo, j) =>

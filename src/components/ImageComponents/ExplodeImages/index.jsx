@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from '../Image';
+import cc from 'classcat';
 
 import * as styles from './index.module.scss';
 
@@ -19,8 +20,27 @@ const ExplodeImages = ({ imageGroups }) => {
         []
     );
 
-    const row1 = 3;
-    const row2 = 2;
+    const mobileWidth = 768;
+	const isMobile = () => window.innerWidth < mobileWidth;
+
+	const [mobile, setMobile] = useState(useState(isMobile()));
+
+	const onWindowResize = () => {
+		setMobile(isMobile());
+	}
+
+	useEffect(() => {
+		setMobile(isMobile);
+		window.addEventListener('resize', onWindowResize);
+	});
+
+    const row1 = useMemo(() => {
+        return mobile ? 1 : 3;
+    });
+
+    const row2 = useMemo(() => {
+        return mobile ? 1 : 2;
+    });
 
     let imageGrid = [];
     images.forEach((image, i) => {
@@ -36,7 +56,11 @@ const ExplodeImages = ({ imageGroups }) => {
     })
 
     return (
-        <div className={styles.imageCategoriesWrapper}>
+        <div className={cc({
+            [styles.mobile]: !!mobile,
+            [styles.desktop]: !mobile,
+            [styles.imageCategoriesWrapper]: true
+        })}>
             {imageGrid.map((row, i) =>
                 <div className={styles[`_${i%2}`]}>
                     {row.map((image) =>
