@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import cc from 'classcat';
 
 import Image from '../Image';
@@ -66,12 +66,21 @@ const ImageGrid = ({
         })
     ));
 
+    const nextImage = useCallback(() => {
+        setModalIndex((modalIndex + 1) % imageData.length);
+    }, [modalIndex])
+
+    const prevImage = useCallback(() => {
+        setModalIndex((modalIndex - 1 + imageData.length) % imageData.length);
+    }, [modalIndex])
 
     return (
         <div>
             {modalIndex !== -1 &&
                 <FullscreenModal
                     imageData={imageData[modalIndex].childImageSharp.original}
+                    next={nextImage}
+                    prev={prevImage}
                     closeModal={() => closeModal(modalIndex)}
                 />
             }

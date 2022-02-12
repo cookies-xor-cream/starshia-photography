@@ -4,7 +4,7 @@ import Image from '../Image';
 
 import * as styles from './index.module.scss';
 
-const FullscreenModal = ({ imageData, closeModal }) => {
+const FullscreenModal = ({ imageData, closeModal, next, prev }) => {
     useEffect(() => {
         const dochtml = document.querySelector('html');        
         dochtml.classList.add('noscroll');
@@ -16,12 +16,11 @@ const FullscreenModal = ({ imageData, closeModal }) => {
                 <Image imagedata={imageData} />
             </div>
 
-            <button
-                className={styles.close}
-                onClick={closeModal}
-            >
-                close
-            </button>
+            <div className={styles.buttonPanel}>
+                <button onClick={closeModal}>close</button>
+                <button onClick={next}>next</button>
+                <button onClick={prev}>prev</button>
+            </div>
         </div>
     );
 };
